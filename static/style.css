@@ -1,0 +1,228 @@
+:root {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-sub: #64748b;
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --canvas-border: #e2e8f0;
+  --shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #f8fafc;
+  --text-sub: #94a3b8;
+  --primary-color: #6366f1;
+  --primary-hover: #4f46e5;
+  --canvas-border: #334155;
+  --shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100dvh;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+  position: relative;
+}
+
+.theme-toggle-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--canvas-border);
+  font-size: 1.3rem;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  z-index: 10;
+  transition:
+    transform 0.2s,
+    background-color 0.3s;
+}
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+.container {
+  background: var(--bg-card);
+  padding: 24px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+  transition: background-color 0.4s ease;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+.subtitle {
+  color: var(--text-sub);
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.canvas-container {
+  border: 2px solid var(--canvas-border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: inline-block;
+  background: #ffffff;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+  max-width: 100%;
+}
+
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  cursor: crosshair;
+}
+
+.controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  flex: 1 1 auto;
+  min-width: 90px;
+  transition: all 0.2s ease;
+}
+
+.clear-btn {
+  background: #ef4444;
+  color: white;
+}
+.clear-btn:hover {
+  background: #dc2626;
+}
+.upload-btn {
+  background: var(--text-sub);
+  color: white;
+}
+.upload-btn:hover {
+  opacity: 0.9;
+}
+.predict-btn {
+  background: var(--primary-color);
+  color: white;
+  flex-grow: 2;
+}
+.predict-btn:hover {
+  background: var(--primary-hover);
+}
+
+#result {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--bg-main);
+  font-weight: 500;
+  transition: background-color 0.4s ease;
+}
+.digit-res {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  display: block;
+  margin: 4px 0;
+}
+.confidence-res {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+}
+
+.prob-list {
+  margin-top: 16px;
+  width: 100%;
+}
+.prob-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.prob-label {
+  width: 20px;
+  font-weight: bold;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+.prob-track {
+  flex: 1;
+  background: var(--canvas-border);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 10px;
+}
+.prob-fill {
+  height: 100%;
+  background: var(--primary-color);
+  width: 0%;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.prob-val {
+  width: 45px;
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 16px;
+  }
+  h1 {
+    font-size: 1.3rem;
+  }
+  button {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+  .theme-toggle-btn {
+    top: 10px;
+    right: 10px;
+    font-size: 1.1rem;
+    padding: 8px 12px;
+  }
+}
