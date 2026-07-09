@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handwritten Digit Recognizer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+  <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">🌙</button>
+
+  <div class="container">
+    <h1>Handwritten Digit Recognizer</h1>
+    <p class="subtitle">Draw or upload a single digit (0-9)</p>
+    <div class="canvas-container">
+      <canvas id="canvas" width="280" height="280"></canvas>
+    </div>
+
+    <div class="controls">
+      <button type="button" class="clear-btn" id="clear">Clear</button>
+
+      <button type="button" class="upload-btn" id="upload-trigger">Upload Image</button>
+      <input type="file" id="image-upload" accept="image/*" hidden>
+
+      <button type="button" class="predict-btn" id="predict">Recognize</button>
+    </div>
+
+    <div id="result">Draw a number or upload an image to begin!</div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
